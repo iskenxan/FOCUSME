@@ -1,3 +1,3 @@
 # FOCUSME
-##Clean and usable application for focus on your work
+###Clean and usable application to focus on your work
 
