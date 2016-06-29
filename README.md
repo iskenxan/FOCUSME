@@ -1,7 +1,6 @@
 # FOCUSME
 ###Clean and usable application to focus on your work
-|Basic Functionality:|
-|--------------------|
+##Basic Functionality:
 
 * **Set the values for your session before launching it**
 
