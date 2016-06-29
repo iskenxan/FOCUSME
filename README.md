@@ -24,6 +24,8 @@
 
 ###About Project:
 **The application is built using C# and WPF. Structured according to MVVM pattern.**
+![Image of MVVM]
+(https://raw.githubusercontent.com/iskenxan/FOCUSME/master/MVVM.gif)
 
 ###Interface:
 **For building the interface I used [MetroWindow](https://github.com/MahApps/MahApps.Metro) package in Nuget.**
