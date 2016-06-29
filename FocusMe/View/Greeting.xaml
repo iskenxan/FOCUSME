@@ -1,0 +1,23 @@
+﻿<Window x:Class="FocusMe.View.Greeting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="FocusMe" Height="450" Width="650" Opacity="0" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True"   >
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard x:Name="loadedBeginStoryBoard">
+                <Storyboard x:Name="loadedStoryBoard">
+                    <StaticResourceExtension ResourceKey="fadeInAnimation"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid x:Name="mainGrid" Background="White"  MouseLeftButtonDown="mainGrid_MouseLeftButtonDown">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="welcomeTextBox" Text="WELCOME TO FOCUS ME" FontSize="48" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0" />
+        <TextBlock x:Name="secondTextBox" FontSize="24" Text="This App will help you focus on your task" Margin="20" VerticalAlignment="Bottom" HorizontalAlignment="Center" Opacity="0"/>
+    </Grid>
+</Window>

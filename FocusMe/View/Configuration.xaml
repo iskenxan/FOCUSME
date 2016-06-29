@@ -1,0 +1,63 @@
+﻿<mahapps:MetroWindow x:Class="FocusMe.Configuration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:validation="clr-namespace:FocusMe.Validation"
+        Title="FocusMe" Height="450" Width="650" WindowStyle="None" Opacity="1" WindowStartupLocation="CenterScreen">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <StaticResourceExtension ResourceKey="fadeInAnimation"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid Background="White" x:Name="mainGrid"   >
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Number of Sessions" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10"/>
+        <TextBox ToolTip="Number of sessions the application will run" x:Name="sessionNumbTextBox" VerticalAlignment="Top" Margin="10,50,10,10" FontSize="15">
+            <TextBox.Text>
+                <Binding Path="Status.SessionsNumber" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged" Mode="OneWayToSource">
+                    <Binding.ValidationRules>
+                        <validation:SessionsValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Column="1" Content="Session Length" FontSize="20" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center" />
+        <TextBox ToolTip="The length of each session in minutes " x:Name="sessionLengthTextBox"   Grid.Column="1" VerticalAlignment="Top"  Margin="10,50,10,10" FontSize="15">
+            <TextBox.Text>
+                <Binding Path="Status.SessionLength" Mode="OneWayToSource" ValidatesOnDataErrors="True" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:SessionsValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Grid.Column="2" Content="Break Length" FontSize="20" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center" />
+        <TextBox ToolTip="The length of each break in minutes" x:Name="breakLengthTextBox" Grid.Column="2" VerticalAlignment="Top"  Margin="10,50,10,10" FontSize="15">
+            <TextBox.Text>
+                <Binding Path="Status.BreakLength" Mode="OneWayToSource" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                        <validation:SessionsValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <mahapps:ToggleSwitch IsChecked="{Binding Status.PlayWaves,Mode=TwoWay}" x:Name="playAplhaSwitch" Grid.Row="1" Header="Play Aplha Waves" HorizontalAlignment="Center" OffLabel="No" OnLabel="Yes" OffSwitchBrush="Black" />
+        <mahapps:ToggleSwitch IsChecked="{Binding Status.TakeScreens, Mode=TwoWay}" x:Name="takeScreenSwitch" Grid.Row="1" Header="Take Screenshots" HorizontalAlignment="Center" OffLabel="No" OnLabel="Yes" OffSwitchBrush="Black" Grid.Column="1" />
+        <mahapps:ToggleSwitch IsChecked="{Binding Status.MonitorApps,Mode=TwoWay}" x:Name="monitorAppSwitch" Grid.Row="1" Header="Monitor Applications" HorizontalAlignment="Center" OffLabel="No" OnLabel="Yes" OffSwitchBrush="Black" Grid.Column="2" />
+        <Button  Grid.Row="2" Command="{Binding LaunchCommand}"  CommandParameter="{Binding Manager}" x:Name="launchButton"  Content="Launch" FontSize="15" Grid.Column="1" Margin="10" Style="{StaticResource AccentedSquareButtonStyle}"/>
+       
+    </Grid>
+</mahapps:MetroWindow>

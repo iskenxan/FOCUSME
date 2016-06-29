@@ -1,0 +1,27 @@
+﻿<mahapps:MetroWindow x:Class="FocusMe.View.Status"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mahapps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="FocusMe" Height="450" Width="650" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Sessions left:" FontSize="20" Margin="20" HorizontalAlignment="Left"/>
+        <Label Content="{Binding Status.SessionsNumber}" Margin="20" FontSize="20" HorizontalAlignment="Center"/>
+        <ToggleButton x:Name="PlayWavesButton" Margin="10" BorderBrush="Black" Style="{StaticResource MetroCircleToggleButtonStyle}" Grid.Column="1" IsChecked="{Binding IsPlayingAlpha,Mode=TwoWay}" VerticalAlignment="Top" HorizontalAlignment="Center" Height="60" Width="60">
+            <Rectangle Height="25" Width="25" Fill="Black">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_sound_2}"/>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+        </ToggleButton>
+        <Label Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding SessionInfo}" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="40" Margin="20" />
+        <Label Content="{Binding Status.CurrentSession.SessionLength}" x:Name="TimerLabel" Grid.Row="1" Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="120" />
+    </Grid>
+</mahapps:MetroWindow>

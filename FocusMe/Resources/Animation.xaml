@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+        <!--x:Shared=false is needed because otherwise greetings.xaml.cs gives an expception-->
+    <DoubleAnimation x:Shared="false"  x:Key="fadeInAnimation" To="1" Storyboard.TargetProperty="Opacity" Duration="0:0:3"  />
+    <DoubleAnimation x:Shared="false"  x:Key="fadeOutAnimation" To="0" Storyboard.TargetProperty="Opacity" Duration="0:0:3"/>
+</ResourceDictionary>
